@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WinUI3Study20250312.Views.Pages.Home"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUI3Study20250312.Views.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <CommandBar DefaultLabelPosition="Right" VerticalAlignment="Top">
+            <AppBarButton Command="{x:Bind ViewModel.LoadPdfCommand}" Icon="OpenFile" Label="Open"/>
+            <AppBarButton Command="{x:Bind ViewModel.PlusHogeCommand}" Icon="Add" Label="Hoge"/>
+        </CommandBar>
+        <ScrollViewer ZoomMode="Enabled"
+            VerticalScrollMode="Enabled" 
+                      HorizontalScrollMode="Enabled" 
+                      HorizontalScrollBarVisibility="Auto" 
+                      VerticalScrollBarVisibility="Auto" Margin="0,48,0,0">
+            <ItemsRepeater ItemsSource="{x:Bind ViewModel.Hoge}">
+                <DataTemplate x:DataType="x:String">
+                    <TextBlock Text="{x:Bind}"/>
+                </DataTemplate>
+            </ItemsRepeater>
+        </ScrollViewer>
+        <ScrollViewer ZoomMode="Enabled"
+            VerticalScrollMode="Enabled" 
+                      HorizontalScrollMode="Enabled" 
+                      HorizontalScrollBarVisibility="Auto" 
+                      VerticalScrollBarVisibility="Auto" Margin="0,48,0,0">
+            <ItemsRepeater ItemsSource="{x:Bind ViewModel.PdfImages}">
+                <DataTemplate x:DataType="BitmapImage">
+                    <Image Source="{x:Bind}"/>
+                </DataTemplate>
+            </ItemsRepeater>
+        </ScrollViewer>
+    </Grid>
+</Page>
