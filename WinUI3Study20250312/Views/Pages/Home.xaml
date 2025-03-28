@@ -10,26 +10,36 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <CommandBar DefaultLabelPosition="Right" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MaxWidth="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <CommandBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" DefaultLabelPosition="Right" VerticalAlignment="Top">
             <AppBarButton Command="{x:Bind ViewModel.LoadPdfCommand}" Icon="OpenFile" Label="Open"/>
             <AppBarButton Command="{x:Bind ViewModel.PlusHogeCommand}" Icon="Add" Label="Hoge"/>
         </CommandBar>
-        <ScrollViewer ZoomMode="Enabled"
-            VerticalScrollMode="Enabled" 
+        <ScrollViewer Grid.Row="1" Grid.Column="0"
+                      ZoomMode="Enabled"
+                      VerticalScrollMode="Enabled" 
                       HorizontalScrollMode="Enabled" 
                       HorizontalScrollBarVisibility="Auto" 
-                      VerticalScrollBarVisibility="Auto" Margin="0,48,0,0">
+                      VerticalScrollBarVisibility="Auto">
             <ItemsRepeater ItemsSource="{x:Bind ViewModel.Hoge}">
                 <DataTemplate x:DataType="x:String">
                     <TextBlock Text="{x:Bind}"/>
                 </DataTemplate>
             </ItemsRepeater>
         </ScrollViewer>
-        <ScrollViewer ZoomMode="Enabled"
-            VerticalScrollMode="Enabled" 
+        <ScrollViewer Grid.Row="1" Grid.Column="1"
+                      ZoomMode="Enabled"
+                      VerticalScrollMode="Enabled" 
                       HorizontalScrollMode="Enabled" 
                       HorizontalScrollBarVisibility="Auto" 
-                      VerticalScrollBarVisibility="Auto" Margin="0,48,0,0">
+                      VerticalScrollBarVisibility="Auto">
             <ItemsRepeater ItemsSource="{x:Bind ViewModel.PdfImages}">
                 <DataTemplate x:DataType="BitmapImage">
                     <Image Source="{x:Bind}"/>
