@@ -62,7 +62,7 @@ namespace WinUI3Study20250312.ViewModels.Pages
         }
 
         [RelayCommand]
-        private async Task PlusHoge()
+        private async Task PlusHogeAsync()
         {
             var newHoge = Hoge;
             newHoge.Add("hoge");
